@@ -83,10 +83,10 @@ function Carousel({ carouselData, loading, endPoint, title }) {
                       classes="w-full h-full object-cover object-center"
                     />
                     <CircleRating
-                      rating={item.vote_average.toFixed(1)}
+                      rating={item?.vote_average?.toFixed(1)}
                       classes="w-10 md:w-12.5 h-10 md:h-12.5 relative top-7.5 bg-white shrink-0"
                     />
-                    <Genres data={item.genre_ids.slice(0, 2)} />
+                    <Genres data={item?.genre_ids?.slice(0, 2)} />
                   </div>
                   <div className="textBlock flex flex-col text-white">
                     <span className="title text-base md:text-xl mb-2.5 leading-6">
@@ -101,7 +101,7 @@ function Carousel({ carouselData, loading, endPoint, title }) {
             })}
           </div>
         ) : (
-          <div className="loadingSkeleton w-full flex gap-2.5 overflow-y-hidden -mx-5 px-5 md:gap-5 md:overflow-hidden md:m-0 md:p-0 ">
+          <div className="loadingSkeleton w-full flex gap-2.5 no-scrollbar overflow-y-hidden -mx-5 px-5 md:gap-5 md:overflow-hidden md:m-0 md:p-0 ">
             {skItem()}
             {skItem()}
             {skItem()}

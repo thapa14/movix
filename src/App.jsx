@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { fetchDataFromApi } from "./utils/api";
-import { Contact, Details, Home, Search } from "./pages";
+import { Contact, Details, Explore, Home, Search } from "./pages";
 import { getApiConfiguration, getGenres } from "./redux/store-slice";
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -57,6 +57,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/search/:searchQuery" element={<Search />} />
           <Route path="/:mediaType/:id" element={<Details />} />
+          <Route path="/explore/:mediaType" element={<Explore />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -26,7 +26,7 @@ function Header() {
       label: "Movies",
       method() {
         setMobileMenu(false);
-        navigatorMethod("movies");
+        navigatorMethod("movie");
       },
     },
     {
@@ -101,7 +101,7 @@ function Header() {
         <div className="mobile-menu flex sm:hidden items-center justify-center gap-5">
           {/* for search icon  */}
 
-          {showSearch ? (
+          {/* {showSearch ? (
             <VscChromeClose
               className="fill-white cursor-pointer"
               onClick={() => setShowSearch(false)}
@@ -111,7 +111,11 @@ function Header() {
               className=" stroke-white cursor-pointer"
               onClick={openSearch}
             />
-          )}
+          )} */}
+          <HiOutlineSearch
+            className=" stroke-white cursor-pointer"
+            onClick={openSearch}
+          />
 
           {/* for hamburger icon */}
           {mobileMenu ? (
@@ -132,10 +136,10 @@ function Header() {
             <ContentWrapper>
               <SearchInput
                 btnValue={
-                  <AiFillDelete className="fill-black cursor-pointer" />
+                  <VscChromeClose className="fill-black cursor-pointer" />
                 }
                 btnClass="flex items-center justify-center"
-                btnMethod={(e) => clearSearch(e)}
+                btnMethod={(e) => setShowSearch(false)}
                 setShowSearch={setShowSearch}
               />
             </ContentWrapper>

@@ -12,8 +12,6 @@ function Search() {
   const [pageNumber, setPageNumber] = useState(1);
   const { searchQuery } = useParams();
 
-  console.log(searchQuery);
-
   const fetchInitialData = () => {
     setLoading(true);
     fetchDataFromApi(
@@ -26,6 +24,7 @@ function Search() {
   };
 
   const fetchNextPageData = () => {
+    console.log("next page function");
     fetchDataFromApi(
       `/search/multi?query=${searchQuery}&page=${pageNumber}`
     ).then((res) => {
@@ -39,30 +38,45 @@ function Search() {
   };
 
   useEffect(() => {
+    console.log("useEffect");
+    setPageNumber(1);
     fetchInitialData();
   }, [searchQuery]);
 
-  console.log(data?.results?.length);
   return (
     <>
-      <div className="searchResultsPage min-h-[700px pt-25">
+      <div className="searchResultsPage min-h-[700px] pt-25">
         {/* {true && <Spinner />} */}
         {!loading && (
-          <ContentWrapper>
+          <ContentWrapper classes="flex-col">
             {data?.results?.length > 0 ? (
               <>
-                <div className="pageTitle">{`Search ${
+                <div className="pageTitle text-2xl leading-[34px] text-white mb-6">{`Search ${
                   data.total_results > 1 ? "results" : "result"
                 } of ${searchQuery}`}</div>
-                {/* <InfiniteScroll>
-                  {data.results.map((item, index) => {
-                    if (item.media_type === "person") return;
+
+                <InfiniteScroll
+                  className="content flex flex-row flex-wrap gap-2.5 md:gap-5 mb-12.5 "
+                  dataLength={data?.results?.length}
+                  hasMore={pageNumber <= data?.total_pages}
+                  next={fetchNextPageData}
+                  loader={<h4>Loading...</h4>}
+                  endMessage={
+                    <p style={{ textAlign: "center" }}>
+                      <b>Yay! You have seen it all</b>
+                    </p>
+                  }
+                >
+                  {data?.results?.map((item, index) => {
+                    if (item?.media_type === "person") return;
                     return <MovieCard key={index} data={item} />;
                   })}
-                </InfiniteScroll> */}
+                </InfiniteScroll>
               </>
             ) : (
-              <span className="resultNotFound">Sorry, Result not found</span>
+              <span className="resultNotFound text-2xl text-black1">
+                Sorry, Result not found
+              </span>
             )}
           </ContentWrapper>
         )}

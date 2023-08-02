@@ -28,6 +28,16 @@ body {
 }
 
 .posterBlock > .lazy-load-image-background {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.posterBlock > .lazy-load-image-background {
   position: absolute;
   top: 0;
   left: 0;
