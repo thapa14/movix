@@ -4,8 +4,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Select from "react-select";
 import MovieCard from "../../components/movie-card";
 import ContentWrapper from "../../components/content-wrapper";
-import { fetchDataFromApi } from "../../utils/api";
-import useFetch from "../../utils/fetchApi";
+import { fetchDataFromApi } from "../../utils/fetchDataFromApi";
+import useFetch from "../../utils/useFetch";
 
 let filters = {};
 
@@ -67,6 +67,8 @@ const Explore = () => {
   }, [mediaType]);
 
   const onChange = (selectedItems, action) => {
+    console.log(action);
+    console.log(selectedItems);
     if (action.name === "sortby") {
       setSortby(selectedItems);
       if (action.action !== "clear") {
@@ -109,7 +111,7 @@ const Explore = () => {
               getOptionValue={(option) => option.id}
               onChange={onChange}
               placeholder="Select genres"
-              className="react-select-container genresDD w-full md:max-w-[500px] md:min-w-[250px]"
+              className="genresDD w-full md:max-w-[500px] md:min-w-[250px]"
               classNamePrefix="react-select"
             />
             <Select

@@ -10,10 +10,8 @@ import { AiFillDelete } from "react-icons/ai";
 import ContentWrapper from "./content-wrapper";
 
 function Header() {
-  const [show, setShow] = useState("top");
   const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenu, setMobileMenu] = useState(false);
-  const [query, setQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const navigate = useNavigate();
 
@@ -44,16 +42,6 @@ function Header() {
     },
   ];
 
-  // method to calculate the scroll value
-  const scrollNavbar = () => {
-    setLastScrollY(window.scrollY);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", scrollNavbar);
-    return () => window.removeEventListener("scroll", scrollNavbar);
-  }, []);
-
   const openSearch = () => {
     setShowSearch(true);
     setMobileMenu(false);
@@ -64,17 +52,20 @@ function Header() {
     setMobileMenu(true);
   };
 
-  const clearSearch = (props) => {
-    const { setQuery } = props;
-    setQuery("");
+  // method to calculate the scroll value
+  const scrollNavbar = () => {
+    setLastScrollY(window.scrollY);
   };
+
+  useEffect(() => {
+    window.addEventListener("scroll", scrollNavbar);
+    return () => window.removeEventListener("scroll", scrollNavbar);
+  }, []);
 
   return (
     <header
-      className={`w-full h-15 flex items-center translate-y-0 transition-all duration-500 ease-in-out fixed z-10 ${
-        lastScrollY > 150 ? "bg-black3" : "bg-[#00000050]"
-      } ${
-        mobileMenu ? "bg-black3 md:bg-[#00000050]" : "bg-[#00000050]"
+      className={`w-full h-15 flex items-center translate-y-0 transition-all duration-200 ease-in-out fixed z-20 ${
+        lastScrollY > 50 ? "bg-black3" : mobileMenu ? "bg-black3" : "bg-t-black"
       }  sm:backdrop-opacity-30`}
     >
       <ContentWrapper classes="items-center justify-between">
@@ -100,18 +91,6 @@ function Header() {
 
         <div className="mobile-menu flex sm:hidden items-center justify-center gap-5">
           {/* for search icon  */}
-
-          {/* {showSearch ? (
-            <VscChromeClose
-              className="fill-white cursor-pointer"
-              onClick={() => setShowSearch(false)}
-            />
-          ) : (
-            <HiOutlineSearch
-              className=" stroke-white cursor-pointer"
-              onClick={openSearch}
-            />
-          )} */}
           <HiOutlineSearch
             className=" stroke-white cursor-pointer"
             onClick={openSearch}
@@ -139,7 +118,6 @@ function Header() {
                   <VscChromeClose className="fill-black cursor-pointer" />
                 }
                 btnClass="flex items-center justify-center"
-                btnMethod={(e) => setShowSearch(false)}
                 setShowSearch={setShowSearch}
               />
             </ContentWrapper>

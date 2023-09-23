@@ -26,7 +26,7 @@ function SearchInput({ btnClass, btnValue, btnMethod, setShowSearch }) {
         <button
           className={`btn w-100px md:w-150px h-12 md:h-15 text-base md:text-lg outline-0 border-0 rounded-r-[30px] ${btnClass}`}
           onClick={() => {
-            btnMethod({ query: query, setQuery: setQuery });
+            btnValue === "Search" ? btnMethod({ query }) : setShowSearch(false);
           }}
         >
           {btnValue}

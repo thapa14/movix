@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ContentWrapper from "./content-wrapper";
 import Carousel from "./carousel";
 import SwitchTabs from "./switch-tabs";
-import useFetch from "../utils/fetchApi";
+import useFetch from "../utils/useFetch";
 
 function Popular() {
   const [endPoint, setEndPoint] = useState("movie");

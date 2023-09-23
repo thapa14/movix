@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchDataFromApi } from "../../utils/api";
+import { fetchDataFromApi } from "../../utils/fetchDataFromApi";
 import Spinner from "../../components/spinner";
 import ContentWrapper from "../../components/content-wrapper";
 import InfiniteScroll from "react-infinite-scroll-component";

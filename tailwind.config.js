@@ -31,6 +31,7 @@ export default {
         black1: "#04152d",
         black2: "#041226",
         black3: "#020c1b",
+        "t-black": "#00000050",
         "black-lighter": "#1c4b91",
         "black-light": "#173d77",
         pink1: "#da2f68",

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
 import ContentWrapper from "../../components/content-wrapper";
-import useFetch from "../../utils/fetchApi";
+import useFetch from "../../utils/useFetch";
 import Img from "../../components/img";
 import posterFallback from "../../assets/images/no-poster.png";
 import Genres from "../../components/genres";

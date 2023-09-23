@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import useFetch from "../../utils/fetchApi";
+import useFetch from "../../utils/useFetch";
 import { useSelector } from "react-redux";
 import Img from "../../components/img";
 import SearchInput from "../../components/search-input";
@@ -9,6 +9,7 @@ import ContentWrapper from "../../components/content-wrapper";
 function HeroBanner() {
   const [background, setBackground] = useState(null);
   const backdropUrl = useSelector((state) => state.home.url.backdrop);
+  console.log("/trending/movie/day");
   const { data, loading } = useFetch("/trending/movie/day");
   const navigate = useNavigate();
 
