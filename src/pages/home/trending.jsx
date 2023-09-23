@@ -12,8 +12,6 @@ function Trending() {
     setEndPoint(tab === "Day" ? "day" : "week");
   };
 
-  console.log(`/trending/all/${endPoint}`);
-
   const { data, loading } = useFetch(`/trending/all/${endPoint}`);
 
   return (

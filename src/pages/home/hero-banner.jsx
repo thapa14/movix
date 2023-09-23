@@ -9,7 +9,6 @@ import ContentWrapper from "../../components/content-wrapper";
 function HeroBanner() {
   const [background, setBackground] = useState(null);
   const backdropUrl = useSelector((state) => state.home.url.backdrop);
-  console.log("/trending/movie/day");
   const { data, loading } = useFetch("/trending/movie/day");
   const navigate = useNavigate();
 

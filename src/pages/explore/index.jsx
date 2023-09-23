@@ -6,26 +6,15 @@ import MovieCard from "../../components/movie-card";
 import ContentWrapper from "../../components/content-wrapper";
 import { fetchDataFromApi } from "../../utils/fetchDataFromApi";
 import useFetch from "../../utils/useFetch";
+import CardShimmer from "../../components/shimmer/card-shimmer";
+import Header from "./head";
 
 let filters = {};
-
-const sortbyData = [
-  { value: "popularity.desc", label: "Popularity Descending" },
-  { value: "popularity.asc", label: "Popularity Ascending" },
-  { value: "vote_average.desc", label: "Rating Descending" },
-  { value: "vote_average.asc", label: "Rating Ascending" },
-  {
-    value: "primary_release_date.desc",
-    label: "Release Date Descending",
-  },
-  { value: "primary_release_date.asc", label: "Release Date Ascending" },
-  { value: "original_title.asc", label: "Title (A-Z)" },
-];
 
 const Explore = () => {
   const [data, setData] = useState(null);
   const [pageNum, setPageNum] = useState(1);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [genre, setGenre] = useState(null);
   const [sortby, setSortby] = useState(null);
   const { mediaType } = useParams();
@@ -67,6 +56,7 @@ const Explore = () => {
   }, [mediaType]);
 
   const onChange = (selectedItems, action) => {
+    //select option function
     console.log(action);
     console.log(selectedItems);
     if (action.name === "sortby") {
@@ -80,7 +70,7 @@ const Explore = () => {
 
     if (action.name === "genres") {
       setGenre(selectedItems);
-      if (action.action !== "clear") {
+      if (action.action !== "remove-value") {
         let genreId = selectedItems.map((g) => g.id);
         genreId = JSON.stringify(genreId).slice(1, -1);
         filters.with_genres = genreId;
@@ -88,7 +78,6 @@ const Explore = () => {
         delete filters.with_genres;
       }
     }
-
     setPageNum(1);
     fetchInitialData();
   };
@@ -96,37 +85,13 @@ const Explore = () => {
   return (
     <div className="explorePage min-h-[700px] pt-25">
       <ContentWrapper classes="flex-col">
-        <div className="pageHeader flex flex-col md:flex-row justify-between mb-6 ">
-          <div className="pageTitle text-2xl leading-8 mb-5 md:mb-0 text-white">
-            {mediaType === "tv" ? "Explore TV Shows" : "Explore Movies"}
-          </div>
-          <div className="filters flex gap-2.5 flex-col md:flex-row">
-            <Select
-              isMulti
-              name="genres"
-              value={genre}
-              closeMenuOnSelect={false}
-              options={genresData?.genres}
-              getOptionLabel={(option) => option.name}
-              getOptionValue={(option) => option.id}
-              onChange={onChange}
-              placeholder="Select genres"
-              className="genresDD w-full md:max-w-[500px] md:min-w-[250px]"
-              classNamePrefix="react-select"
-            />
-            <Select
-              name="sortby"
-              value={sortby}
-              options={sortbyData}
-              onChange={onChange}
-              isClearable={true}
-              placeholder="Sort by"
-              className="react-select-container sortbyDD w-full shrink-0 md:w-[250px]"
-              classNamePrefix="react-select"
-            />
-          </div>
-        </div>
-        {!loading && (
+        <Header
+          onChange={onChange}
+          genresData={genresData}
+          sortby={sortby}
+          mediaType={mediaType}
+        />
+        {!loading ? (
           <>
             {data?.results?.length > 0 ? (
               <InfiniteScroll
@@ -149,6 +114,12 @@ const Explore = () => {
               </span>
             )}
           </>
+        ) : (
+          <div className="loadingSkeleton w-full flex gap-2.5 no-scrollbar overflow-y-hidden -mx-5 px-5 md:gap-5 md:overflow-hidden md:m-0 md:p-0 ">
+            {[1, 2, 3, 4, 5].map((el, index) => (
+              <CardShimmer key={index} />
+            ))}
+          </div>
         )}
       </ContentWrapper>
     </div>
