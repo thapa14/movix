@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import useFetch from "../../utils/useFetch";
+import useFetch from "../../utils/hooks/useFetch";
 import { useSelector } from "react-redux";
 import Img from "../../components/img";
 import SearchInput from "../../components/search-input";
 import { useNavigate } from "react-router-dom";
 import ContentWrapper from "../../components/content-wrapper";
+import BackdropImage from "../../components/BackdropImage";
 
 function HeroBanner() {
   const [background, setBackground] = useState(null);
@@ -29,15 +30,8 @@ function HeroBanner() {
   return (
     <div className="hero-banner w-full h-[450px] md:h-[700px] flex items-center relative bg-[#04152d]">
       {!loading && (
-        <div className="h-full w-full absolute top-0 left-0 overflow-hidden opacity-50">
-          <Img
-            image={background}
-            classes="w-full h-full object-cover object-center"
-          />
-        </div>
+        <BackdropImage imagePath={background} opacity="opacity-50" />
       )}
-
-      <div className="opacity-layer"></div>
 
       <ContentWrapper classes="h-full items-center justify-center">
         <div className="hero-banner-content flex flex-col items-center text-center relative text-white mx-auto my-0 max-w-[800px]">

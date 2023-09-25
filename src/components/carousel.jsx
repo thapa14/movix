@@ -82,7 +82,7 @@ function Carousel({ carouselData, loading, endPoint, title }) {
                       <Genres data={item?.genre_ids?.slice(0, 2)} />
                     </div>
                     <div className="textBlock flex flex-col text-white">
-                      <span className="title text-base md:text-xl mb-2.5 leading-6">
+                      <span className="title text-base md:text-xl mb-2.5 leading-6 truncate">
                         {item.title || item.name}
                       </span>
                       <span className="date opacity-50 text-sm">

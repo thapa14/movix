@@ -5,7 +5,7 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import { fetchDataFromApi } from "./utils/fetchDataFromApi";
 import { getApiConfiguration, getGenres } from "./redux/store-slice";
-import { Home } from "./pages";
+import Home from "./pages/home";
 
 const Details = lazy(() => import("./pages/details"));
 const Explore = lazy(() => import("./pages/explore"));

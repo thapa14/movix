@@ -3,20 +3,11 @@ import ContentWrapper from "../../components/content-wrapper";
 import VideoPopup from "../../components/video-popup";
 import Img from "../../components/img";
 import { PlayIcon } from "../../components/play-icon";
+import AdditionalVideosShimmer from "../../components/shimmer/addtitionalVideosShimmer";
 
 const VideosSection = ({ data, loading }) => {
   const [show, setShow] = useState(false);
   const [videoId, setVideoId] = useState(null);
-
-  const loadingSkeleton = () => {
-    return (
-      <div className="skItem w-[150px] md:w-1/4 shrink-0">
-        <div className="thumb skeleton w-full aspect-video rounded-xl mb-2.5"></div>
-        <div className="row skeleton h-5 w-full rounded-[10px] mb-2.5"></div>
-        <div className="row2 skeleton w-3/4 h-5 rounded-[10px]"></div>
-      </div>
-    );
-  };
 
   return (
     <div className="videosSection relative mb-12.5">
@@ -53,10 +44,9 @@ const VideosSection = ({ data, loading }) => {
           </div>
         ) : (
           <div className="videoSkeleton flex gap-2.5 md:gap-5 overflow-x-auto -mx-5 md:m-0 py-0 px-5 md:p-0">
-            {loadingSkeleton()}
-            {loadingSkeleton()}
-            {loadingSkeleton()}
-            {loadingSkeleton()}
+            {[1, 2, 3, 4, 5].map((el) => (
+              <AdditionalVideosShimmer key={el} />
+            ))}
           </div>
         )}
       </ContentWrapper>
