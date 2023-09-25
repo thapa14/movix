@@ -3,7 +3,7 @@ import ContentWrapper from "../../components/content-wrapper";
 import VideoPopup from "../../components/video-popup";
 import Img from "../../components/img";
 import { PlayIcon } from "../../components/play-icon";
-import AdditionalVideosShimmer from "../../components/shimmer/addtitionalVideosShimmer";
+import AdditionalVideosShimmer from "../../components/shimmer/AddtitionalVideosShimmer";
 
 const VideosSection = ({ data, loading }) => {
   const [show, setShow] = useState(false);
