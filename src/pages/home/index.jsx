@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import HeroBanner from "./hero-banner";
-import { fetchDataFromApi } from "../../utils/api";
 import Trending from "./trending";
 import Popular from "./popular";
 import TopRated from "./top-rated";

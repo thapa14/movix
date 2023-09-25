@@ -1,0 +1,9 @@
+export const extractData = (data, findingData) => {
+  return data.map((d) => d[findingData]);
+};
+
+export const toHoursAndMinutes = (totalMinutes) => {
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+  return `${hours}h${minutes > 0 ? ` ${minutes}m` : ""}`;
+};

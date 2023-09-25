@@ -1,10 +1,9 @@
 import React from "react";
-import useFetch from "../../../utils/fetchApi";
+import useFetch from "../../../utils/hooks/useFetch";
 import Carousel from "../../../components/carousel";
 
 const Similar = ({ mediaType, id }) => {
   const { data, loading, error } = useFetch(`/${mediaType}/${id}/similar`);
-  console.log(data);
 
   const title = mediaType === "tv" ? "Similar TV Shows" : "Similar Movies";
 

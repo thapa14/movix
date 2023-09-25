@@ -22,7 +22,6 @@ const MovieCard = ({ data, fromSearch, mediaType }) => {
     >
       <div className="posterBlock w-full flex items-end justify-between p-2.5 mb-7.5 relative bg-center bg-cover aspect-[1/1.5] transition-all ease-in-out duration-500">
         <Img
-          //   className="posterImg"
           image={posterUrl}
           classes="w-full h-full object-cover object-center"
         />

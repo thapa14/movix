@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchDataFromApi } from "../../utils/api";
-import Spinner from "../../components/spinner";
+import { fetchDataFromApi } from "../../utils/fetchDataFromApi";
 import ContentWrapper from "../../components/content-wrapper";
-import InfiniteScroll from "react-infinite-scroll-component";
-import MovieCard from "../../components/movie-card";
+import InfiniteListDisplay from "../../components/infinite-list-display";
 
 function Search() {
   const [data, setdata] = useState(null);
@@ -38,7 +36,6 @@ function Search() {
   };
 
   useEffect(() => {
-    console.log("useEffect");
     setPageNumber(1);
     fetchInitialData();
   }, [searchQuery]);
@@ -46,40 +43,19 @@ function Search() {
   return (
     <>
       <div className="searchResultsPage min-h-[700px] pt-25">
-        {/* {true && <Spinner />} */}
-        {!loading && (
-          <ContentWrapper classes="flex-col">
-            {data?.results?.length > 0 ? (
-              <>
-                <div className="pageTitle text-2xl leading-[34px] text-white mb-6">{`Search ${
-                  data.total_results > 1 ? "results" : "result"
-                } of ${searchQuery}`}</div>
-
-                <InfiniteScroll
-                  className="content flex flex-row flex-wrap gap-2.5 md:gap-5 mb-12.5 "
-                  dataLength={data?.results?.length}
-                  hasMore={pageNumber <= data?.total_pages}
-                  next={fetchNextPageData}
-                  loader={<h4>Loading...</h4>}
-                  endMessage={
-                    <p style={{ textAlign: "center" }}>
-                      <b>Yay! You have seen it all</b>
-                    </p>
-                  }
-                >
-                  {data?.results?.map((item, index) => {
-                    if (item?.media_type === "person") return;
-                    return <MovieCard key={index} data={item} />;
-                  })}
-                </InfiniteScroll>
-              </>
-            ) : (
-              <span className="resultNotFound text-2xl text-black1">
-                Sorry, Result not found
-              </span>
-            )}
-          </ContentWrapper>
-        )}
+        <ContentWrapper classes="flex-col">
+          {!loading && data?.results?.length > 0 && (
+            <div className="pageTitle text-2xl leading-[34px] text-white mb-6">{`Search ${
+              data.total_results > 1 ? "results" : "result"
+            } of ${searchQuery}`}</div>
+          )}
+          <InfiniteListDisplay
+            loading={loading}
+            data={data}
+            fetchNextPageData={fetchNextPageData}
+            pageNumber={pageNumber}
+          />
+        </ContentWrapper>
       </div>
     </>
   );

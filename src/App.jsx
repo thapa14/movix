@@ -1,12 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, lazy, Suspense } from "react";
 import { useDispatch } from "react-redux";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-
-import { fetchDataFromApi } from "./utils/api";
-import { Contact, Details, Explore, Home, Search } from "./pages";
-import { getApiConfiguration, getGenres } from "./redux/store-slice";
+import { Route, Routes } from "react-router-dom";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import { fetchDataFromApi } from "./utils/fetchDataFromApi";
+import { getApiConfiguration, getGenres } from "./redux/store-slice";
+import Home from "./pages/home";
+
+const Details = lazy(() => import("./pages/details"));
+const Explore = lazy(() => import("./pages/explore"));
+const Search = lazy(() => import("./pages/search"));
+const Contact = lazy(() => import("./pages/contact"));
 
 function App() {
   const dispatch = useDispatch();
@@ -26,7 +30,7 @@ function App() {
   useEffect(() => {
     configurationApiMethod();
     getGenresMethod();
-  });
+  }, []);
 
   const getGenresMethod = async () => {
     const promises = [];
@@ -36,13 +40,11 @@ function App() {
     allEndpoints.forEach((endpoint) => {
       promises.push(fetchDataFromApi(`/genre/${endpoint}/list`));
     });
-    console.log(promises);
 
     const genreData = await Promise.all(promises);
-    console.log(genreData);
 
     genreData.forEach(({ genres }) => {
-      return genres.forEach((item) => (allGenres[item.id] = item));
+      return genres.forEach((item) => (allGenres[item.id] = item)); // set allGenres as {id: genre,}
     });
 
     dispatch(getGenres(allGenres));
@@ -50,17 +52,43 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/search/:searchQuery" element={<Search />} />
-          <Route path="/:mediaType/:id" element={<Details />} />
-          <Route path="/explore/:mediaType" element={<Explore />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/contact"
+          element={
+            <Suspense>
+              <Contact />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/search/:searchQuery"
+          element={
+            <Suspense>
+              <Search />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/:mediaType/:id"
+          element={
+            <Suspense>
+              <Details />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/explore/:mediaType"
+          element={
+            <Suspense>
+              <Explore />
+            </Suspense>
+          }
+        />
+      </Routes>
+      <Footer />
     </>
   );
 }

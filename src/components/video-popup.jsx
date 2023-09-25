@@ -8,7 +8,7 @@ const VideoPopup = ({ show, setShow, videoId, setVideoId }) => {
   };
   return (
     <div
-      className={`videoPopup w-full h-full flex justify-center items-center fixed top-0 left-0  z-10 ${
+      className={`videoPopup w-full h-full flex justify-center items-center fixed top-0 left-0  z-20 ${
         show ? "opacity-100 visible" : "opacity-0 invisible"
       }
       `}

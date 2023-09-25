@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import useFetch from "../../utils/fetchApi";
+import useFetch from "../../utils/hooks/useFetch";
 import DetailsBanner from "./details-banner";
 import Cast from "./cast";
 import VideosSection from "./videos-section";

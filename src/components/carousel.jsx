@@ -12,14 +12,13 @@ import noPosterDefault from "../assets/images/no-poster.png";
 import dayjs from "dayjs";
 import CircleRating from "./circle-rating";
 import Genres from "./genres";
+import CardShimmer from "./shimmer/card-shimmer";
 
 function Carousel({ carouselData, loading, endPoint, title }) {
   // useState
-
   const carouselContainer = useRef();
   const posterUrl = useSelector((state) => state.home.url.poster);
   const navigate = useNavigate();
-
   const navigation = (dir) => {
     const container = carouselContainer.current;
     const scrollAmount =
@@ -32,18 +31,6 @@ function Carousel({ carouselData, loading, endPoint, title }) {
 
   const ArrowClasses =
     "hidden md:block text-3xl text-black absolute top-[44%] cursor-pointer opacity-60 hover:opacity-80 transition-opacity ease-in-out duration-150 z-[10]  translate-y-[-50%]  fill-white";
-
-  const skItem = () => {
-    return (
-      <div className="skeletonItem w-[125px] md:w-[calc(25%-15px)] lg:w-[calc(20%-16px)] cursor-pointer shrink-0">
-        <div className="posterBlock skeleton w-full rounded-[12px] mb-7.5 aspect-[1/1.5] "></div>
-        <div className="textBlock flex flex-col">
-          <div className="title skeleton w-full h-5 mb-2.5"></div>
-          <div className="date skeleton w-3/4 h-5"></div>
-        </div>
-      </div>
-    );
-  };
 
   return (
     <div className="mb-12.5">
@@ -95,7 +82,7 @@ function Carousel({ carouselData, loading, endPoint, title }) {
                       <Genres data={item?.genre_ids?.slice(0, 2)} />
                     </div>
                     <div className="textBlock flex flex-col text-white">
-                      <span className="title text-base md:text-xl mb-2.5 leading-6">
+                      <span className="title text-base md:text-xl mb-2.5 leading-6 truncate">
                         {item.title || item.name}
                       </span>
                       <span className="date opacity-50 text-sm">
@@ -109,11 +96,11 @@ function Carousel({ carouselData, loading, endPoint, title }) {
           </>
         ) : (
           <div className="loadingSkeleton w-full flex gap-2.5 no-scrollbar overflow-y-hidden -mx-5 px-5 md:gap-5 md:overflow-hidden md:m-0 md:p-0 ">
-            {skItem()}
-            {skItem()}
-            {skItem()}
-            {skItem()}
-            {skItem()}
+            <CardShimmer />
+            <CardShimmer />
+            <CardShimmer />
+            <CardShimmer />
+            <CardShimmer />
           </div>
         )}
       </ContentWrapper>
