@@ -1,11 +1,11 @@
 import React, { useEffect, lazy, Suspense } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Routes } from "react-router-dom";
-import Header from "./components/header";
-import Footer from "./components/footer";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { fetchDataFromApi } from "./utils/fetchDataFromApi";
 import { getApiConfiguration, getGenres } from "./redux/store-slice";
 import Home from "./pages/home";
+import Layout from "./components/Layout";
+import ErrorComponent from "./components/ErrorComponent";
 
 const Details = lazy(() => import("./pages/details"));
 const Explore = lazy(() => import("./pages/explore"));
@@ -14,6 +14,11 @@ const Contact = lazy(() => import("./pages/contact"));
 
 function App() {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    configurationApiMethod();
+    getGenresMethod();
+  }, []);
 
   const configurationApiMethod = async () => {
     const data = await fetchDataFromApi("/configuration");
@@ -26,11 +31,6 @@ function App() {
       })
     );
   };
-
-  useEffect(() => {
-    configurationApiMethod();
-    getGenresMethod();
-  }, []);
 
   const getGenresMethod = async () => {
     const promises = [];
@@ -50,45 +50,55 @@ function App() {
     dispatch(getGenres(allGenres));
   };
 
-  return (
-    <>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/contact"
-          element={
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      errorElement: <ErrorComponent />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+        {
+          path: "/contact",
+          element: (
             <Suspense>
               <Contact />
             </Suspense>
-          }
-        />
-        <Route
-          path="/search/:searchQuery"
-          element={
-            <Suspense>
-              <Search />
-            </Suspense>
-          }
-        />
-        <Route
-          path="/:mediaType/:id"
-          element={
+          ),
+        },
+        {
+          path: "/:mediaType/:id",
+          element: (
             <Suspense>
               <Details />
             </Suspense>
-          }
-        />
-        <Route
-          path="/explore/:mediaType"
-          element={
+          ),
+        },
+        {
+          path: "/search/:searchQuery",
+          element: (
+            <Suspense>
+              <Search />
+            </Suspense>
+          ),
+        },
+        {
+          path: "/explore/:mediaType",
+          element: (
             <Suspense>
               <Explore />
             </Suspense>
-          }
-        />
-      </Routes>
-      <Footer />
+          ),
+        },
+      ],
+    },
+  ]);
+
+  return (
+    <>
+      <RouterProvider router={router} />
     </>
   );
 }

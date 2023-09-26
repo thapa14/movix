@@ -6,7 +6,6 @@ import logo from "../assets/images/movix-logo.svg";
 import { HiOutlineSearch } from "react-icons/hi";
 import { SlMenu } from "react-icons/sl";
 import { VscChromeClose } from "react-icons/vsc";
-import { AiFillDelete } from "react-icons/ai";
 import ContentWrapper from "./content-wrapper";
 
 function Header() {
