@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchDataFromApi } from "../fetchDataFromApi";
 
 const useFetch = (url, params) => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
 

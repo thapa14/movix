@@ -6,6 +6,7 @@ import { getApiConfiguration, getGenres } from "./redux/store-slice";
 import Home from "./pages/home";
 import Layout from "./components/Layout";
 import ErrorComponent from "./components/ErrorComponent";
+import Person from "./pages/person";
 
 const Details = lazy(() => import("./pages/details"));
 const Explore = lazy(() => import("./pages/explore"));
@@ -91,6 +92,10 @@ function App() {
               <Explore />
             </Suspense>
           ),
+        },
+        {
+          path: "/person/:personId",
+          element: <Person />,
         },
       ],
     },
