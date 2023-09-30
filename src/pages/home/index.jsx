@@ -1,4 +1,3 @@
-import React from "react";
 import HeroBanner from "./hero-banner";
 import Trending from "./trending";
 import Popular from "./popular";

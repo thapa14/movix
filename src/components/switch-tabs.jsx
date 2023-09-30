@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function SwitchTabs({ tabData = [], tabChangeMethod }) {
+function SwitchTabs({ tabData = [], tabChangeMethod, classes }) {
   const [selectedTab, setSelectedTab] = useState(0);
   const [left, setLeft] = useState(0);
 
@@ -13,7 +13,11 @@ function SwitchTabs({ tabData = [], tabChangeMethod }) {
   };
 
   return (
-    <div className="switchingTabs h-[34px] p-0.5 rounded-full bg-white">
+    <div
+      className={
+        "switchingTabs h-[34px] p-0.5 rounded-full bg-white " + classes
+      }
+    >
       <div className="tabItems h-[30px] flex items-center relative">
         {tabData.map((tab, index) => (
           <span

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -50,4 +50,4 @@ const MovieCard = ({ data, fromSearch, mediaType }) => {
   );
 };
 
-export default MovieCard;
+export default memo(MovieCard);

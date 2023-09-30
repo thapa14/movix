@@ -1,4 +1,4 @@
-import React, { useEffect, lazy, Suspense } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { useDispatch } from "react-redux";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { fetchDataFromApi } from "./utils/fetchDataFromApi";
@@ -23,7 +23,7 @@ function App() {
 
   const configurationApiMethod = async () => {
     const data = await fetchDataFromApi("/configuration");
-
+    console.log(data);
     dispatch(
       getApiConfiguration({
         backdrop: data.images.secure_base_url + "original",

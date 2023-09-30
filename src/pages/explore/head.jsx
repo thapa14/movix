@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { sortbyData } from "../../utils/static-data/explore-page";
 import Select from "react-select";
 
@@ -38,4 +38,4 @@ function Header(props) {
   );
 }
 
-export default Header;
+export default memo(Header);

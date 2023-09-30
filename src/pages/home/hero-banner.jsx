@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import useFetch from "../../utils/hooks/useFetch";
 import { useSelector } from "react-redux";
-import Img from "../../components/img";
 import SearchInput from "../../components/search-input";
 import { useNavigate } from "react-router-dom";
 import ContentWrapper from "../../components/content-wrapper";
 import BackdropImage from "../../components/BackdropImage";
 
-function HeroBanner() {
+const HeroBanner = () => {
   const [background, setBackground] = useState(null);
   const backdropUrl = useSelector((state) => state.home.url.backdrop);
   const { data, loading } = useFetch("/trending/movie/day");
@@ -18,7 +17,7 @@ function HeroBanner() {
       backdropUrl +
       data?.results?.[Math.floor(Math.random() * 20)]?.backdrop_path;
     setBackground(bg);
-  }, [data]);
+  }, [data, backdropUrl]);
 
   const querySearchMethod = (props) => {
     const { query } = props;
@@ -51,6 +50,6 @@ function HeroBanner() {
       </ContentWrapper>
     </div>
   );
-}
+};
 
-export default HeroBanner;
+export default memo(HeroBanner);
