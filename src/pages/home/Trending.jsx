@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import ContentWrapper from "../../components/content-wrapper";
-import SwitchTabs from "../../components/switch-tabs";
+import React, { memo, useState } from "react";
+import ContentWrapper from "../../components/ContentWrapper";
+import SwitchTabs from "../../components/SwitchTabs";
 import useFetch from "../../utils/hooks/useFetch";
-import Carousel from "../../components/carousel";
-import { useEffect } from "react";
+import Carousel from "../../components/Carousel";
 
 function Trending() {
   const [endPoint, setEndPoint] = useState("day");
@@ -28,4 +27,4 @@ function Trending() {
   );
 }
 
-export default Trending;
+export default memo(Trending);
