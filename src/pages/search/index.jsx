@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchDataFromApi } from "../../utils/fetchDataFromApi";
-import ContentWrapper from "../../components/content-wrapper";
-import InfiniteListDisplay from "../../components/infinite-list-display";
+import ContentWrapper from "../../components/ContentWrapper";
+import InfiniteListDisplay from "../../components/InfiniteListDisplay";
 
 function Search() {
   const [data, setdata] = useState(null);

@@ -1,7 +1,7 @@
-import HeroBanner from "./hero-banner";
-import Trending from "./trending";
-import Popular from "./popular";
-import TopRated from "./top-rated";
+import HeroBanner from "./HeroBanner";
+import Trending from "./Trending";
+import Popular from "./Popular";
+import TopRated from "./TopRated";
 
 function Home() {
   return (

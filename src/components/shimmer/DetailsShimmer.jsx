@@ -1,4 +1,4 @@
-import ContentWrapper from "../content-wrapper";
+import ContentWrapper from "../ContentWrapper";
 
 const rowStyle =
   "w-full h-[25px] mb-5 rounded-[50px] [&:nth-child(2)]:w-1/3 [&:nth-child(2)]:mb-12.5 [&:nth-child(5)]:w-1/2 [&:nth-child(5)]:mb-12.5";

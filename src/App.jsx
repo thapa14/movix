@@ -1,12 +1,16 @@
 import { useEffect, lazy, Suspense } from "react";
-import { useDispatch } from "react-redux";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { fetchDataFromApi } from "./utils/fetchDataFromApi";
+
+import { useDispatch } from "react-redux";
 import { getApiConfiguration, getGenres } from "./redux/store-slice";
+
+import { fetchDataFromApi } from "./utils/fetchDataFromApi";
+
 import Home from "./pages/home";
+import Person from "./pages/person";
+
 import Layout from "./components/Layout";
 import ErrorComponent from "./components/ErrorComponent";
-import Person from "./pages/person";
 
 const Details = lazy(() => import("./pages/details"));
 const Explore = lazy(() => import("./pages/explore"));

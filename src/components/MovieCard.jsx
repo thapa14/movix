@@ -2,9 +2,9 @@ import React, { memo } from "react";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Img from "./img";
-import CircleRating from "./circle-rating";
-import Genres from "./genres";
+import Img from "./Img";
+import CircleRating from "./CircleRating";
+import Genres from "./Genres";
 import PosterFallback from "../assets/images/no-poster.png";
 
 const MovieCard = ({ data, fromSearch, mediaType }) => {

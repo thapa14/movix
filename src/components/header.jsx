@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import SearchInput from "./search-input";
+import SearchInput from "./SearchInput";
 import logo from "../assets/images/movix-logo.svg";
 
 import { HiOutlineSearch } from "react-icons/hi";
 import { SlMenu } from "react-icons/sl";
 import { VscChromeClose } from "react-icons/vsc";
-import ContentWrapper from "./content-wrapper";
+import ContentWrapper from "./ContentWrapper";
 
 function Header() {
   const [lastScrollY, setLastScrollY] = useState(0);

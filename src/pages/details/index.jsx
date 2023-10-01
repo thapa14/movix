@@ -1,9 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../utils/hooks/useFetch";
-import DetailsBanner from "./details-banner";
-import Cast from "./cast";
-import VideosSection from "./videos-section";
+import DetailsBanner from "./DetailsBanner";
+import Cast from "./Cast";
+import VideosSection from "./VideosSection";
 import Similar from "./carousels/similar-movies";
 import Recommendation from "./carousels/recommendation";
 

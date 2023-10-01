@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { useSelector } from "react-redux";
 import posterFallback from "../../assets/images/no-poster.png";
-import Img from "../../components/img";
+import Img from "../../components/Img";
 
 function LeftSection({ personalDetailsArray, profile_path, name }) {
   // hooks

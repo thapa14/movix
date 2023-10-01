@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom";
 
 import useFetch from "../../utils/hooks/useFetch";
 
-import ContentWrapper from "../../components/content-wrapper";
+import ContentWrapper from "../../components/ContentWrapper";
 import TextHeading from "../../components/TextHeading";
-import SwitchTabs from "../../components/switch-tabs";
-import InfiniteListDisplay from "../../components/infinite-list-display";
+import SwitchTabs from "../../components/SwitchTabs";
+import InfiniteListDisplay from "../../components/InfiniteListDisplay";
 
 function MoviesAndTv() {
   // hooks

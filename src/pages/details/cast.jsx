@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 
 import avatar from "../../assets/images/avatar.png";
-import ContentWrapper from "../../components/content-wrapper";
-import Img from "../../components/img";
+import ContentWrapper from "../../components/ContentWrapper";
+import Img from "../../components/Img";
 import CastCardShimmer from "../../components/shimmer/CastCardShimmer";
 import { useNavigate } from "react-router-dom";
 

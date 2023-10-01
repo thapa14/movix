@@ -1,10 +1,10 @@
 import React, { useState, useEffect, memo } from "react";
 import { useParams } from "react-router-dom";
-import ContentWrapper from "../../components/content-wrapper";
+import ContentWrapper from "../../components/ContentWrapper";
 import { fetchDataFromApi } from "../../utils/fetchDataFromApi";
 import useFetch from "../../utils/hooks/useFetch";
-import Header from "./head";
-import InfiniteListDisplay from "../../components/infinite-list-display";
+import Header from "./Head";
+import InfiniteListDisplay from "../../components/InfiniteListDisplay";
 
 const Explore = () => {
   const [data, setData] = useState(null);

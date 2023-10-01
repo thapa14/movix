@@ -1,8 +1,8 @@
 import React, { memo, useState } from "react";
-import ContentWrapper from "../../components/content-wrapper";
-import SwitchTabs from "../../components/switch-tabs";
+import ContentWrapper from "../../components/ContentWrapper";
+import SwitchTabs from "../../components/SwitchTabs";
 import useFetch from "../../utils/hooks/useFetch";
-import Carousel from "../../components/carousel";
+import Carousel from "../../components/Carousel";
 
 function TopRated() {
   const [endPoint, setEndPoint] = useState("movie");

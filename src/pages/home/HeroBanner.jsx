@@ -1,9 +1,9 @@
 import { memo, useEffect, useState } from "react";
 import useFetch from "../../utils/hooks/useFetch";
 import { useSelector } from "react-redux";
-import SearchInput from "../../components/search-input";
+import SearchInput from "../../components/SearchInput";
 import { useNavigate } from "react-router-dom";
-import ContentWrapper from "../../components/content-wrapper";
+import ContentWrapper from "../../components/ContentWrapper";
 import BackdropImage from "../../components/BackdropImage";
 
 const HeroBanner = () => {

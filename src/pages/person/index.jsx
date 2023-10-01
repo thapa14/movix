@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../utils/hooks/useFetch";
-import DetailsShimmer from "../../components/shimmer/details-shimmer";
-import ContentWrapper from "../../components/content-wrapper";
-import Img from "../../components/img";
+import DetailsShimmer from "../../components/shimmer/DetailsShimmer";
+import ContentWrapper from "../../components/ContentWrapper";
+import Img from "../../components/Img";
 import TextHeading from "../../components/TextHeading";
 import LeftSection from "./LeftSection";
 import RightSection from "./RightSection";
