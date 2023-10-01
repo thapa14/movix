@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
-import ContentWrapper from "./content-wrapper";
-import Img from "./img";
+import ContentWrapper from "./ContentWrapper";
+import Img from "./Img";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
@@ -10,9 +10,9 @@ import {
 
 import noPosterDefault from "../assets/images/no-poster.png";
 import dayjs from "dayjs";
-import CircleRating from "./circle-rating";
-import Genres from "./genres";
-import CardShimmer from "./shimmer/card-shimmer";
+import CircleRating from "./CircleRating";
+import Genres from "./Genres";
+import CardShimmer from "./shimmer/CardShimmer";
 
 function Carousel({ carouselData, loading, endPoint, title }) {
   // useState

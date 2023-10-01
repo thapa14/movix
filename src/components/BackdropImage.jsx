@@ -1,5 +1,5 @@
 import React from "react";
-import Img from "./img";
+import Img from "./Img";
 
 function BackdropImage({ imagePath, opacity }) {
   return (

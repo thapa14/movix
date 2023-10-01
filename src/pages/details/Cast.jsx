@@ -1,13 +1,18 @@
-import React from "react";
 import { useSelector } from "react-redux";
 
 import avatar from "../../assets/images/avatar.png";
-import ContentWrapper from "../../components/content-wrapper";
-import Img from "../../components/img";
+import ContentWrapper from "../../components/ContentWrapper";
+import Img from "../../components/Img";
 import CastCardShimmer from "../../components/shimmer/CastCardShimmer";
+import { useNavigate } from "react-router-dom";
 
 const Cast = ({ data, loading }) => {
   const { url } = useSelector((state) => state.home);
+  const navigate = useNavigate();
+
+  const navigateToPersonDetails = (personId) => {
+    navigate(`/person/${personId}`);
+  };
 
   return (
     <div className="castSection relative mb-12.5  ">
@@ -20,7 +25,11 @@ const Cast = ({ data, loading }) => {
                 ? url.profile + item?.profile_path
                 : avatar;
               return (
-                <div key={item.id} className="listItem text-center text-white">
+                <div
+                  key={item.id}
+                  className="listItem text-center text-white cursor-pointer"
+                  onClick={() => navigateToPersonDetails(item.id)}
+                >
                   <div className="profileImg w-[125px] md:w-[175px] h-[125px] md:h-[175px] rounded-full mb-4 md:mb-6 overflow-hidden">
                     <Img
                       image={imgUrl}

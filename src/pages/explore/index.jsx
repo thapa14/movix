@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { useParams } from "react-router-dom";
-import ContentWrapper from "../../components/content-wrapper";
+import ContentWrapper from "../../components/ContentWrapper";
 import { fetchDataFromApi } from "../../utils/fetchDataFromApi";
 import useFetch from "../../utils/hooks/useFetch";
-import Header from "./head";
-import InfiniteListDisplay from "../../components/infinite-list-display";
-
-let filters = {};
+import Header from "./Head";
+import InfiniteListDisplay from "../../components/InfiniteListDisplay";
 
 const Explore = () => {
   const [data, setData] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [loading, setLoading] = useState(true);
   const [genre, setGenre] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [pageNumber, setPageNumber] = useState(1);
   const [sortby, setSortby] = useState(null);
-  const { mediaType } = useParams();
 
+  const { mediaType } = useParams();
   const { data: genresData } = useFetch(`/genre/${mediaType}/list`);
+
+  let filters = {};
 
   const fetchInitialData = () => {
     setLoading(true);
@@ -99,4 +99,4 @@ const Explore = () => {
   );
 };
 
-export default Explore;
+export default memo(Explore);

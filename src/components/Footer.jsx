@@ -1,5 +1,5 @@
 import React from "react";
-import ContentWrapper from "./content-wrapper";
+import ContentWrapper from "./ContentWrapper";
 import {
   FaFacebookF,
   FaInstagram,

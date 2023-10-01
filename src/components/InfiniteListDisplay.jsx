@@ -1,7 +1,7 @@
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import MovieCard from "./movie-card";
-import CardShimmer from "./shimmer/card-shimmer";
+import MovieCard from "./MovieCard";
+import CardShimmer from "./shimmer/CardShimmer";
 
 function InfiniteListDisplay(props) {
   const { loading, data, fetchNextPageData, pageNumber, mediaType } = props;
